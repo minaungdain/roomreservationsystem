@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { AdminPage } from '../admin/admin';
+import { Admin2Page } from '../admin2/admin2';
+//import { AdminPage } from '../admin/admin';
+//import { Admin3Page } from '../admin3/admin3';
+import { Admin4Page } from '../admin4/admin4';
+//import { AdminPage } from '../admin/admin';
+
+@Component({
+  selector: 'page-admin3',
+  templateUrl: 'admin3.html'
+})
+export class Admin3Page {
+
+  constructor(public navCtrl: NavController) {
+  }
+  goToAdmin(params){
+    if (!params) params = {};
+    this.navCtrl.push(AdminPage);
+  }goToAdmin2(params){
+    if (!params) params = {};
+    this.navCtrl.push(Admin2Page);
+ // }goToAdmin(params){
+ //   if (!params) params = {};
+ //   this.navCtrl.push(AdminPage);
+  }goToAdmin3(params){
+    if (!params) params = {};
+    this.navCtrl.push(Admin3Page);
+  }goToAdmin4(params){
+    if (!params) params = {};
+    this.navCtrl.push(Admin4Page);
+ // }goToAdmin(params){
+  //  if (!params) params = {};
+  //  this.navCtrl.push(AdminPage);
+  }
+}
