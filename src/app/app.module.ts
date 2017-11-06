@@ -18,6 +18,17 @@ import { Manager5Page } from '../pages/manager5/manager5';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireModule } from 'angularfire2';
+
+// Initialize Firebase
+  export const firebaseConfig = {
+    apiKey: "AIzaSyA1Nezh3LBYWMBtwPnw4uDNIcBIbXtwDj0",
+    authDomain: "roomreservationsystem-7de09.firebaseapp.com",
+    databaseURL: "https://roomreservationsystem-7de09.firebaseio.com",
+    projectId: "roomreservationsystem-7de09",
+    storageBucket: "roomreservationsystem-7de09.appspot.com",
+    messagingSenderId: "52821733340"
+};
 
 @NgModule({
   declarations: [
@@ -38,7 +49,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
