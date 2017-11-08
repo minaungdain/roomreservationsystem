@@ -1,3 +1,4 @@
+import { ToastController } from 'ionic-angular/umd';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AdminPage } from '../admin/admin';
@@ -20,15 +21,47 @@ import { Manager5Page } from '../manager5/manager5';
 import { Manager3Page } from '../manager3/manager3';
 //import { ManagerPage } from '../manager/manager';
 //import { ManagerPage } from '../manager/manager';
+//import { SignupPage } from '../signup/signup';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-export class LoginPage {
 
-  constructor(public navCtrl: NavController) {
+export class LoginPage {
+  loginData = {
+    email: '',
+    password: ''
   }
+
+constructor(
+  private navCtrl: NavController,
+  private afAuth: AngularFireAuth,
+  private toastCtrl: ToastController){}
+
+  //constructor(public navCtrl: NavController) {
+  //}
+
+  signin() {
+    this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
+      .then(auth => {
+
+      })
+      .catch(err => {
+        //Handle error
+        let toast = this.toastCtrl.create({
+          message: err.message,
+          duration: 1000
+        });
+        toast.present();
+      })
+  }
+
+  //signup() {
+  //  this.navCtrl.push(SignupPage, { email: this.loginData.email});
+
+ // }
   goToAdmin(params){
     if (!params) params = {};
     this.navCtrl.push(AdminPage);

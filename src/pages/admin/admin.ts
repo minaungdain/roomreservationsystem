@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Admin2Page } from '../admin2/admin2';
@@ -13,8 +14,15 @@ import { Admin4Page } from '../admin4/admin4';
 })
 export class AdminPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    private navCtrl: NavController,
+    private auth: AngularFireAuth) {
   }
+
+  signOut() {
+    this.auth.auth.signOut();
+  }
+
   goToAdmin2(params){
     if (!params) params = {};
     this.navCtrl.push(Admin2Page);

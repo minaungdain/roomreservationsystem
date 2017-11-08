@@ -1,17 +1,12 @@
+import { AdminPage } from './../pages/admin/admin';
 import { LoginPage } from './../pages/login/login';
 import { AngularFireAction } from 'angularfire2/database/interfaces';
-import { HomePage } from './../pages/home/home';
+//import { HomePage } from './../pages/home/home';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
-//import * as firebase from 'firebase';
-
-
-
-
-
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +20,7 @@ export class MyApp {
       if (!auth)
         this.rootPage = LoginPage;
       else
-        this.rootPage = HomePage;
+        this.rootPage = AdminPage;
     });
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

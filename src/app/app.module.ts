@@ -23,7 +23,7 @@ import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase/app';
 
  // Initialize Firebase
-  export const firebaseConfig = {
+var config = {
     apiKey: "AIzaSyA1Nezh3LBYWMBtwPnw4uDNIcBIbXtwDj0",
     authDomain: "roomreservationsystem-7de09.firebaseapp.com",
     databaseURL: "https://roomreservationsystem-7de09.firebaseio.com",
@@ -52,7 +52,7 @@ firebase.initializeApp(Config);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(config),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
