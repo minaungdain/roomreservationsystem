@@ -1,3 +1,4 @@
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Config, IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -21,7 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase/app';
 
-// Initialize Firebase
+ // Initialize Firebase
   export const firebaseConfig = {
     apiKey: "AIzaSyA1Nezh3LBYWMBtwPnw4uDNIcBIbXtwDj0",
     authDomain: "roomreservationsystem-7de09.firebaseapp.com",
@@ -51,7 +52,8 @@ firebase.initializeApp(Config);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
