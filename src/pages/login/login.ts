@@ -1,6 +1,6 @@
 import { ToastController } from 'ionic-angular/umd';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AdminPage } from '../admin/admin';
 import { Admin2Page } from '../admin2/admin2';
 //import { AdminPage } from '../admin/admin';
@@ -22,7 +22,7 @@ import { Manager3Page } from '../manager3/manager3';
 //import { ManagerPage } from '../manager/manager';
 //import { ManagerPage } from '../manager/manager';
 //import { SignupPage } from '../signup/signup';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthProviders, AngularFireAuthProvider } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-login',
@@ -30,33 +30,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 
 export class LoginPage {
-  loginData = {
-    email: '',
-    password: ''
-  }
+  email: any;
+  password: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public AngularFire: AngularFireAuth){}
 
-constructor(
-  private navCtrl: NavController,
-  private afAuth: AngularFireAuth,
-  private toastCtrl: ToastController){}
 
-  //constructor(public navCtrl: NavController) {
-  //}
+  login() {
+    this.AngularFire.auth.login({email: this.email, password: this.password},
 
-  signin() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
-      .then(auth => {
-
-      })
-      .catch(err => {
-        //Handle error
-        let toast = this.toastCtrl.create({
-          message: err.message,
-          duration: 1000
-        });
-        toast.present();
-      })
-  }
+    {
+      provider: AuthProviders.Password,
+      method: AuthMethods.Password
+    }
+}
 
   //signup() {
   //  this.navCtrl.push(SignupPage, { email: this.loginData.email});

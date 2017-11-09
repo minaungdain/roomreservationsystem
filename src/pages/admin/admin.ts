@@ -1,3 +1,5 @@
+import { LoginPage } from './../login/login';
+import { window } from 'rxjs/operator/window';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -7,16 +9,23 @@ import { Admin3Page } from '../admin3/admin3';
 //import { AdminPage } from '../admin/admin';
 import { Admin4Page } from '../admin4/admin4';
 //import { AdminPage } from '../admin/admin';
-
 @Component({
   selector: 'page-admin',
   templateUrl: 'admin.html'
 })
 export class AdminPage {
+  constructor(public navCtrl: NavController,private auth: AngularFireAuth) {
+    window.localStorage.removeItem('currentuser');
+    if (!this.isLoggedin()) {
+      console.log('You are not logged in');
+      this.navCtrl.push(LoginPage);
+    }
+  }
 
-  constructor(
-    private navCtrl: NavController,
-    private auth: AngularFireAuth) {
+  isLoggedin() {
+    if(window.localStorage.getItem('currentuser')) {
+      return true;
+    }
   }
 
   signOut() {
