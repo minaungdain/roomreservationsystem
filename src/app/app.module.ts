@@ -1,3 +1,4 @@
+
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,12 +32,13 @@ var config = {
     storageBucket: "roomreservationsystem-7de09.appspot.com",
     messagingSenderId: "52821733340"
 };
-
-export const firebaseAuthConfig = {
- // provider: AuthProviders.Password,
- // method: AuthMethod.Password
-}
 firebase.initializeApp(Config);
+/*
+export const firebaseAuthConfig = {
+  provider: AuthProviders
+ // method: AuthMethod.Password
+}*/
+
 @NgModule({
   declarations: [
     MyApp,
@@ -58,7 +60,7 @@ firebase.initializeApp(Config);
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,8 +83,7 @@ firebase.initializeApp(Config);
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StatusBar,
-    SplashScreen
+
   ]
 })
 export class AppModule {}

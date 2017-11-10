@@ -14,18 +14,9 @@ import { Admin4Page } from '../admin4/admin4';
   templateUrl: 'admin.html'
 })
 export class AdminPage {
-  constructor(public navCtrl: NavController,private auth: AngularFireAuth) {
-    window.localStorage.removeItem('currentuser');
-    if (!this.isLoggedin()) {
-      console.log('You are not logged in');
-      this.navCtrl.push(LoginPage);
-    }
-  }
-
-  isLoggedin() {
-    if(window.localStorage.getItem('currentuser')) {
-      return true;
-    }
+  constructor(
+    public navCtrl: NavController,
+    private auth: AngularFireAuth) {
   }
 
   signOut() {

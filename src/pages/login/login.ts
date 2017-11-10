@@ -1,7 +1,7 @@
-import { AuthProvider } from './../../providers/auth/auth';
-import { ToastController } from 'ionic-angular/umd';
+//import { AuthProvider } from './../../providers/auth/auth';
+//import { ToastController } from 'ionic-angular/umd';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AdminPage } from '../admin/admin';
 //import { Admin2Page } from '../admin2/admin2';
 //import { AdminPage } from '../admin/admin';
@@ -23,8 +23,8 @@ import { AdminPage } from '../admin/admin';
 //import { ManagerPage } from '../manager/manager';
 //import { ManagerPage } from '../manager/manager';
 //import { SignupPage } from '../signup/signup';
-import { AngularFireAuth } from 'angularfire2/auth';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 @IonicPage({
   name: 'login'
 })
@@ -39,24 +39,40 @@ import { AngularFireAuth } from 'angularfire2/auth';
 //  password: string;
 //}
 export class LoginPage {
+/*
+ user = {
+   email: 'string',
+   password: 'string'
+ }*/
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private angfireAuth: AngularFireAuth){} /*,
+    public authProvider: AuthProvider){}
+*/
 
+  login(email:'string', password: 'string') {
+    this.angfireAuth.auth.signInWithEmailAndPassword(email, password)
+        .catch (function(error){
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth){}
+        });
 
-
-  login() {
-   // this.afAuth.auth.signInWithEmailAndPassword({ }
-
-    {
-     // provider: AuthProviders.Password,
-    //  method: AuthMethods.Password
     }
-  }
+
 }
 
-  //signup() {
-  //  this.navCtrl.push(SignupPage, { email: this.loginData.email});
-
+ // signup() {
+ //   this.navCtrl.push(SignupPage, { email: this.email});
+ // }
  // }
  // goToAdmin(params){
  //   if (!params) params = {};
@@ -118,5 +134,5 @@ export class LoginPage {
  // }goToManager(params){
  //   if (!params) params = {};
   //  this.navCtrl.push(ManagerPage);
-  }
-}
+  //}
+//}

@@ -14,15 +14,15 @@ export class AuthProvider {
   constructor(public http: Http) {
     console.log('Hello AuthProvider Provider');
   }
-
+/*
   loginUser(email: string, password: string) : Promise <any> {
       return firebase.auth().signInWithEmailAndPassword(email, password);
   }
-
+*/
   signupUser(email: string, password: string) : Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(newUser => {
-      firebase.database().ref('/userProfile').child(newUser.uid).set({email:email});
+      firebase.database().ref('/users').child(newUser.uid).set({email:email});
     });
   }
 

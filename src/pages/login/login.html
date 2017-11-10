@@ -9,8 +9,8 @@
   <div style="width:100%;height:auto;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
     <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
   </div>
-  <form id="login-form" (submit)="loginUser()" novalidate>
-    <div id="login-container1">
+  <form id="login-form">
+    <div id="login-container">
       <div>
         <img src="assets/img/RELXkegXRzy6UYkeycjz_law_changes0.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
       </div>
@@ -20,23 +20,23 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="text" name="email" placeholder="enter email" [class.invalid]="!loginForm.controls.email.valid"></ion-input>
+        <ion-input type="text" name="email" placeholder="enter email" [(ngModel)]="email"></ion-input>
       </ion-item>
       <ion-item id="login-input2">
         <ion-label>
           Password
         </ion-label>
-        <ion-input type="password" name="password" placeholder="enter password" [class.invalid]="!loginForm.controls.email.valid"></ion-input>
+        <ion-input type="password" name="password" placeholder="enter password" [(ngModel)]="password"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <button id="button" ion-button block type="submit" color="stable" [disabled]="!loginForm.valid">
+    <button id="button" ion-button block type="submit" color="stable" (click)="login()">
       Log in
     </button>
-    <button id="ion-button" ion-button block cldar (click)="goToSignup()" clear color="positive">
+    <button id="ion-button" ion-button block color (click)="signup()" clear color="positive">
       create an account
     </button>
-    <button id="pass-button" ion-button block cldar (click)="goToResetPassword()" clear color="positive">
+    <button id="pass-button" ion-button block cldar (click)="resetPassword()" clear color="positive">
       forgot password!
     </button>
   </form>
