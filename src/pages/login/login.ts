@@ -1,7 +1,7 @@
 //import { AuthProvider } from './../../providers/auth/auth';
 //import { ToastController } from 'ionic-angular/umd';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { AdminPage } from '../admin/admin';
 //import { Admin2Page } from '../admin2/admin2';
 //import { AdminPage } from '../admin/admin';
@@ -25,9 +25,9 @@ import { AdminPage } from '../admin/admin';
 //import { SignupPage } from '../signup/signup';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-@IonicPage({
-  name: 'login'
-})
+//@IonicPage({
+//  name: 'login'
+//})
 
 @Component({
   selector: 'page-login',

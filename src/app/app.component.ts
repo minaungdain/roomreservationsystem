@@ -29,7 +29,7 @@ export class MyApp {
     //    unsubscribe();
     //  }
    // });
-    firebase.auth().onAuthStateChanged(function(user) {
+/*    firebase.auth().onAuthStateChanged(function(user) {
       this.user = user; // Set my local copy of the 'user' object
       if (user) {
         this.rootPage = 'AdminPage';
@@ -38,7 +38,7 @@ export class MyApp {
       }
 
     }
-
+*/
     constructor(platform: Platform, private angfireAuth: AngularFireAuth, private StatusBar: StatusBar, private splashScreen: SplashScreen) {
       this.angfireAuth.authState.subscribe(auth => {
         if (!auth)
