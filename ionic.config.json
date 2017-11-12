@@ -2,5 +2,7 @@
   "name": "roomreservationsystem",
   "app_id": "306d62e4",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
