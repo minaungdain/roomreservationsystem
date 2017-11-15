@@ -5,39 +5,46 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page">
+
+<ion-content padding>
   <div style="width:100%;height:auto;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
     <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
   </div>
-  <form id="login-form">
+  <form login-form>
     <div id="login-container">
       <div>
         <img src="assets/img/RELXkegXRzy6UYkeycjz_law_changes0.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
       </div>
     </div>
-    <ion-list id="login-list">
-      <ion-item id="login-input">
-        <ion-label>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>
           Email
         </ion-label>
-        <ion-input type="text" name="email" placeholder="enter email" [(ngModel)]="email"></ion-input>
+        <ion-input type="text" #username></ion-input>
       </ion-item>
-      <ion-item id="login-input2">
-        <ion-label>
+
+      <ion-item>
+        <ion-label floating>
           Password
         </ion-label>
-        <ion-input type="password" name="password" placeholder="enter password" [(ngModel)]="password"></ion-input>
+        <ion-input type="password" #password></ion-input>
       </ion-item>
+
     </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <button id="button" ion-button block type="submit" color="stable" (click)="login()">
-      Log in
-    </button>
-    <button id="ion-button" ion-button block color (click)="signup()" clear color="positive">
-      create an account
-    </button>
-    <button id="pass-button" ion-button block cldar (click)="resetPassword()" clear color="positive">
-      forgot password!
-    </button>
+      <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+      <button block ion-button (click)="signIn()">
+        Log in
+      </button>
+    <!--
+      <button ion-button block (click)="signup()" clear color="positive">
+       create an account
+      </button>
+      <button ion-button block (click)="setPassword()" clear color="positive">
+        forgot password!
+      </button>
+    -->
   </form>
 </ion-content>

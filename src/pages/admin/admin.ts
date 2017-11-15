@@ -1,45 +1,31 @@
-import { LoginPage } from './../login/login';
-import { window } from 'rxjs/operator/window';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Admin2Page } from '../admin2/admin2';
-//import { AdminPage } from '../admin/admin';
-import { Admin3Page } from '../admin3/admin3';
-//import { AdminPage } from '../admin/admin';
-import { Admin4Page } from '../admin4/admin4';
-//import { AdminPage } from '../admin/admin';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+
+/**
+ * Generated class for the AdminPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: 'page-admin',
-  templateUrl: 'admin.html'
+  selector: "page-admin",
+  templateUrl: "admin.html"
 })
 export class AdminPage {
-  constructor(
-    public navCtrl: NavController,
-    private auth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  ionViewDidLoad() {
+    console.log("ionViewDidLoad AdminPage");
   }
 
   signOut() {
-    this.auth.auth.signOut();
-  }
+    //this.navCtrl.pop();
+    this.navCtrl.setRoot(LoginPage);
+    console.log("you have logged out!");
+   // this.navCtrl.popToRoot();
 
-  goToAdmin2(params){
-    if (!params) params = {};
-    this.navCtrl.push(Admin2Page);
-  //}goToAdmin(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(AdminPage);
-  }goToAdmin3(params){
-    if (!params) params = {};
-    this.navCtrl.push(Admin3Page);
- // }goToAdmin(params){
-  //  if (!params) params = {};
-  //  this.navCtrl.push(AdminPage);
-  }goToAdmin4(params){
-    if (!params) params = {};
-    this.navCtrl.push(Admin4Page);
-  }//goToAdmin(params){
-   // if (!params) params = {};
-  //  this.navCtrl.push(AdminPage);
- // }
+  }
 }

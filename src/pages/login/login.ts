@@ -1,138 +1,48 @@
-//import { AuthProvider } from './../../providers/auth/auth';
-//import { ToastController } from 'ionic-angular/umd';
-import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
-import { AdminPage } from '../admin/admin';
-//import { Admin2Page } from '../admin2/admin2';
-//import { AdminPage } from '../admin/admin';
-//import { Admin3Page } from '../admin3/admin3';
-//import { AdminPage } from '../admin/admin';
-//import { Admin4Page } from '../admin4/admin4';
-//import { AdminPage } from '../admin/admin';
-//import { EmployeePage } from '../employee/employee';
-//import { Employee2Page } from '../employee2/employee2';
-//import { EmployeePage } from '../employee/employee';
-//import { ManagerPage } from '../manager/manager';
-//import { Manager2Page } from '../manager2/manager2';
-//import { ManagerPage } from '../manager/manager';
-//import { Manager4Page } from '../manager4/manager4';
-//import { ManagerPage } from '../manager/manager';
-//import { Manager5Page } from '../manager5/manager5';
-//import { ManagerPage } from '../manager/manager';
-//import { Manager3Page } from '../manager3/manager3';
-//import { ManagerPage } from '../manager/manager';
-//import { ManagerPage } from '../manager/manager';
-//import { SignupPage } from '../signup/signup';
-
+import { Component, ViewChild} from '@angular/core';
+import { NavController, NavParams, IonicPage , AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-//@IonicPage({
-//  name: 'login'
-//})
+import { AdminPage } from '../admin/admin';
+
+//@IonicPage()
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
-
-//export interface User {
-//  email: string;
-//  password: string;
-//}
 export class LoginPage {
-/*
- user = {
-   email: 'string',
-   password: 'string'
- }*/
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private angfireAuth: AngularFireAuth){} /*,
-    public authProvider: AuthProvider){}
-*/
 
-  login(email:'string', password: 'string') {
-    this.angfireAuth.auth.signInWithEmailAndPassword(email, password)
-        .catch (function(error){
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
+  @ViewChild('username') user;
+  @ViewChild('password') password;
 
-        });
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
+    private angfireAuth: AngularFireAuth){}
 
+    alert(message: string) {
+      this.alertCtrl.create({
+        title: 'Info!',
+        subTitle: message,
+        buttons: ['OK']
+      }).present();
     }
+
+  signIn() {
+    this.angfireAuth.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
+    .then(data => {
+       console.log("got some data", this.angfireAuth.auth.currentUser);
+        //this.alert("Success! you're logged in");
+        this.navCtrl.setRoot(AdminPage);
+            //user is logged in
+    })
+    .catch (error => {
+      console.log("got an error", error);
+      this.alert(error.message);
+    })
+    console.log('Signed in with', this.user.value, this.password.value);
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
 
 }
 
- // signup() {
- //   this.navCtrl.push(SignupPage, { email: this.email});
- // }
- // }
- // goToAdmin(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(AdminPage);
- // }goToAdmin2(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(Admin2Page);
-  //}goToAdmin(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(AdminPage);
-//  }goToAdmin3(params){
- //   if (!params) params = {};
-//    this.navCtrl.push(Admin3Page);
- // }goToAdmin(params){
- //   if (!params) params = {};
-  //  this.navCtrl.push(AdminPage);
- // }goToAdmin4(params){
-  //  if (!params) params = {};
-  //  this.navCtrl.push(Admin4Page);
- // }goToAdmin(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(AdminPage);
- // }goToEmployee(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(EmployeePage);
- // }goToEmployee2(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(Employee2Page);
-  //}goToEmployee(params){
-  //  if (!params) params = {};
- //   this.navCtrl.push(EmployeePage);
-//  }goToManager(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(ManagerPage);
-//  }goToManager2(params){
- //   if (!params) params = {};
-//    this.navCtrl.push(Manager2Page);
- // }goToManager(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(ManagerPage);
- // }goToManager4(params){
-  //  if (!params) params = {};
- //   this.navCtrl.push(Manager4Page);
-  //}goToManager(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(ManagerPage);
- // }goToManager5(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(Manager5Page);
-  //}goToManager(params){
-  //  if (!params) params = {};
- //   this.navCtrl.push(ManagerPage);
- // }goToManager3(params){
- //   if (!params) params = {};
-  //  this.navCtrl.push(Manager3Page);
- // }goToManager(params){
- //   if (!params) params = {};
- //   this.navCtrl.push(ManagerPage);
- // }goToManager(params){
- //   if (!params) params = {};
-  //  this.navCtrl.push(ManagerPage);
-  //}
-//}
+
