@@ -1,30 +1,73 @@
-<<<<<<< HEAD
 # roomreservationsystem
-=======
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
-## How to use this template 
+![Project Image](project-image-url)
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+> this is a description of the project
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+---
 
-### With the Ionic CLI:
+### Table of Contents
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+- [Description](#description)
+- [How To Use](#how-to-use)
+- [References](#references)
+- [License](#license)
+- [Author Info](#author-info)
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+---
+
+## Description
+This project is a part of my Hybrid mobile application developement -SC4404 class(2/2017) term project.
+
+Room reservation system can be a very helpful system within companies or organizations. It provides services such as reserving a room for a meeting or conference within a few minutes and also can remind the participants about the meeting or conference. Furthermore, it can also reply back to the organizer who will be available or on that day or who will not be able to attend to the meeting.
+
+##### Users Requirement
+-	Administrator
+-	Manager
+-	Employees
+
+
+#### Technologies
+
+- Ionic
+- Firebase
+
+[Back To The Top](#readme.md)
+
+---
+
+## How To Use
+*app demo*
+
+ https://creator.ionic.io/share/eff9a51d3b42
+#### Installation
+
+
+
+#### API Reference
+
+```html
+  
 ```
+[Back To The Top](#read-me-template)
 
-Then, to run it, cd into `myBlank` and run:
+---
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
+## References
+[Back To The Top](#read-me-template)
 
-Substitute ios for android if not on a Mac.
+---
 
->>>>>>> be0f978e... fist commit
+## License
+
+
+[Back To The Top](#read-me-template)
+
+---
+
+## Author Info
+__Min Aung Dain__
+
+- Website - [@minaungdain](https://github.com/minaungdain/roomreservationsystem)
+
+[Back To The Top](#read-me-template)
